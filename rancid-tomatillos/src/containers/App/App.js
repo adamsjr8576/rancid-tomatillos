@@ -1,10 +1,16 @@
 import React from 'react';
 import './App.css';
+import Header from '../../Components/Header/Header';
+import { Route } from 'react-router-dom';
 
-function App() {
+
+const App = () => {
   return (
-    <div>
-      hello
+    <div className='app-container'>
+      <Route exact path='/' render={() => {
+        <Header />
+      }}
+      />
     </div>
   )
 }
