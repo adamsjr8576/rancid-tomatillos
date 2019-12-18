@@ -6,8 +6,8 @@ const Header = () => {
     <header className='header-main'>
       <h1 className='header-h1'>Rancid Tomatillos</h1>
       <section className='header-btn-section'>
-        <button className='header-login-btn'>Log In</button>
-        <button className='header-home-btn'>Home</button>
+        <button className='header-btn'>Log In</button>
+        <button className='header-btn'>Home</button>
       </section>
     </header>
   )

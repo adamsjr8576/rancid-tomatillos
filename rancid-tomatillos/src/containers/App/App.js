@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { addMovies } from '../../actions/index';
-import './App.css';
+import './App.scss';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { Route } from 'react-router-dom';
@@ -24,25 +24,25 @@ class App extends Component {
         this.props.addMovies(data)
         this.setState({ isLoading: false })
       })
-      
+
       .catch(err => console.log(err))
-  } 
+  }
 
   render() {
     const { isLoading } = this.state
     return (
       <div className='app-container'>
-        {isLoading ? <h2>Loading...</h2> 
-            : <>
-                <Route path='/' render={() => {
+        {isLoading ? <h2>Loading...</h2>
+          : <>
+              <Route path='/' render={() => {
                 return <Header />
                 }}
-                />
-                <Route path='/' render={() => {
+              />
+              <Route path='/' render={() => {
                 return <MoviesContainer />
                 }}
-                />
-              </>
+              />
+            </>
         }
       </div>
     )
