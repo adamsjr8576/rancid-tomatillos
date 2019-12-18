@@ -5,10 +5,9 @@ import './MoviesContainer.scss';
 import { render } from 'react-dom';
 
 const MoviesContainer = ({data}) => {
-  console.log(data)
   const moviesList = data.movies.map(movie => {
     return (
-      <MovieCard 
+      <MovieCard
         key={movie.id}
         id={movie.id}
         poster={movie.poster_path}
@@ -16,7 +15,6 @@ const MoviesContainer = ({data}) => {
       />
     )
   })
-  console.log(moviesList)
 
   return (
     <main className='main-movies-container'>
