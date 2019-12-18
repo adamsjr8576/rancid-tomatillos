@@ -16,6 +16,20 @@ class Login extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
+  handleSubmit = () => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    }
+    
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
+      .then(res => res.json())
+      .then(data => console.log(data))
+  }
+
 
 
   render() { 
@@ -27,7 +41,7 @@ class Login extends Component {
         <label htmlFor='password' className="form-label">Password</label>
         <input id='password' className="form-input" type="text" name="password" 
         value={this.state.password} onChange={(e) => this.handleChange(e)} placeholder="password123" autocomplete='off' />
-        <button type='button' className='form-btn'>Submit</button>
+        <button onClick={this.handleSubmit} type='button' className='form-btn'>Submit</button>
       </form>
      );
   }
