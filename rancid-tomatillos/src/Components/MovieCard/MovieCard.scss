@@ -1,0 +1,53 @@
+.movie-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 409px;
+  height: 397px;
+  border-radius: 10px;
+  background-color: #4F776C;
+  color: white;
+  margin: 10px 0;
+}
+
+.section-movie-image {
+  width: 65%;
+  height: 100%;
+  border-radius: 10px;
+  background-size: contain  ;
+}
+
+.section-avg-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 50%;
+  text-align: center;
+}
+
+.average-rating-p {
+  font-size: 1.5em;
+  margin: 0;
+  width: 80%;
+  padding: 5px;
+  border-bottom: 2px solid black;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tomatillo-icon {
+  height: 50px;
+  width: 50px;
+}
+
+.average-rating-num {
+  font-size: 2.5em;
+  margin: 20px 10px;;
+}
