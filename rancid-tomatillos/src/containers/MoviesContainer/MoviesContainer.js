@@ -14,13 +14,13 @@ const MoviesContainer = ({data}) => {
         avgRating={movie.average_rating}
       />
     )
-  })
+  });
 
   return (
     <main className='main-movies-container'>
       {moviesList}
     </main>
-  )
+  );
 }
 
 const mapStateToProps = state => ({
