@@ -11,7 +11,6 @@ const MovieCard = ({ id, poster, avgRating }) => {
   } else if (avgRating > 6) {
     icon = images.goodTomatillo;
   }
-    console.log(icon)
   return (
     <article data-id={id} className='movie-card'>
       <section className='section-movie-image' style={{backgroundImage: `url(${poster})`}}>
@@ -24,7 +23,7 @@ const MovieCard = ({ id, poster, avgRating }) => {
         </section>
       </section>
     </article>
-  )
+  );
 }
 
 export default MovieCard;

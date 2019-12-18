@@ -13,7 +13,7 @@ const Header = ({ data }) => {
         <button className='header-btn'>Home</button>
       </section>
     </header>
-  )
+  );
 }
 
 const mapStateToProps = state => ({
