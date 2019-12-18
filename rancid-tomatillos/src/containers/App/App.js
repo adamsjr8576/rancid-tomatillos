@@ -3,6 +3,7 @@ import { addMovies } from '../../actions/index';
 import './App.css';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import Loading from '../../Components/Loading/Loading';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -12,7 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       isLoading: true
-    }
+    };
   }
 
   componentDidMount = () => {
@@ -32,7 +33,7 @@ class App extends Component {
     const { isLoading } = this.state
     return (
       <div className='app-container'>
-        {isLoading ? <h2>Loading...</h2> 
+        {isLoading ? <main><Header /><Loading /></main>
             : <>
                 <Route path='/' render={() => {
                 return <Header />
