@@ -8,6 +8,13 @@
   background-color: #4F776C;
   color: white;
   margin: 10px 0;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.movie-card:hover {
+  box-shadow: 5px 10px rgba(0, 0, 0, .6);
+
 }
 
 .section-movie-image {
