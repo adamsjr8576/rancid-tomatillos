@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { addMovies } from '../../actions/index';
 import './App.css';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class App extends Component {
@@ -33,6 +35,8 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  addMovies: movies => dispatch( addMovies(movies) )
+})
 
-
-export default App;
+export default connect(null, mapDispatchToProps)(App);
