@@ -8,8 +8,10 @@ describe('App', () => {
    
   beforeEach(() => {
     wrapper = shallow(<App />)
-  })
+  })  
 
   it.skip('should match the snapshot with all the data passed through', () => {
     expect(wrapper).toMatchSnapshot();
   })
+
+});
