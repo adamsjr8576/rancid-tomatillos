@@ -8,7 +8,7 @@ import { removeUser, updateLoggedIn } from '../../actions/index';
 const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
   let log;
   if (isLoggedIn) {
-    log = <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn'>Log Out</button>
+    log = <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn-logout'>Log Out</button>
   } else {
     log = <Link to='/login' className='login-link'>
     <button className='header-btn'>Log In</button>
@@ -20,7 +20,9 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
       <h1 className='header-h1'>Rancid Tomatillos</h1>
       <section className='header-btn-section'>
         {log}
-        <button className='header-btn'>Home</button>
+        <Link to='/' className='login-link'>
+          <button className='header-btn'>Home</button>
+        </Link>
       </section>
     </header>
   );

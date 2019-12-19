@@ -29,7 +29,23 @@
   width: 30%;
 }
 
+.login-link {
+  width: 35%;
+}
+
 .header-btn {
+  width: 100%;
+  font-size: 1.5em;
+  padding: 5px;
+  border-radius: 10px;
+  border: 0;
+  background-color: rgba(0, 0, 0, .7);
+  color: white;
+  cursor: pointer;
+  outline: 0;
+}
+
+.header-btn-logout {
   width: 35%;
   font-size: 1.5em;
   padding: 5px;
