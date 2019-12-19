@@ -10,7 +10,8 @@ class Login extends Component {
     super(props);
     this.state = { 
       email: '',
-      password: ''
+      password: '',
+      error: false 
      }
   }
 
@@ -40,7 +41,9 @@ class Login extends Component {
         this.props.addUser(data)
         this.props.updateLoggedIn(this.props.isLoggedIn)
       })
-    .catch(error => console.log(error))
+    .catch(error => {
+      this.setState({error: true})
+    })
   }
 
 
@@ -63,6 +66,7 @@ class Login extends Component {
             <input id='password' className="form-input" type="text" name="password" 
             value={this.state.password} onChange={(e) => this.handleChange(e)} placeholder="password123" autocomplete='off' />
             <button onClick={this.handleSubmit} type='button' className='form-btn'>Submit</button> 
+            {this.state.error && <p className='error-p'>You have entered an invalid username or password, please try again</p>}
           </form>
         )
       }
