@@ -55,7 +55,6 @@ class Login extends Component {
 
 
   render() { 
-    console.log(this.props.loggedInStatus)
     {
       if (this.props.loggedInStatus) {
         return (
