@@ -5,10 +5,10 @@ export const addMovies = movies => {
   }
 }
 
-export const addUser = user => {
+export const addUser = id => {
   return {
     type: 'ADD_USER',
-    user
+    id
   }
 }
 
