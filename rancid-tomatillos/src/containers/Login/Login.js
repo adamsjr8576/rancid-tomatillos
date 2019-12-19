@@ -3,6 +3,7 @@ import './Login.scss';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { addUser, updateLoggedIn, updateUserRatings } from '../../actions/index';
+import { fetchUser, fetchRatings } from '../../apiCalls';
 
 
 class Login extends Component {
@@ -29,23 +30,16 @@ class Login extends Component {
       body: JSON.stringify(this.state)
     }
 
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
-      .then(res => {
-        if(!res.ok) {
-         throw Error('Incorrect Username/Password')
-        }
-        return res.json()
-      })
+    fetchUser(options)
       .then(data => {
-        
         this.props.addUser(data.user.id)
         this.props.updateLoggedIn(this.props.isLoggedIn)
         return data.user.id
       })
       .then(id => {
-        fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`)
-          .then(res => res.json())
+        fetchRatings(id)
           .then(data => this.props.updateUserRatings(data.ratings))
+          .catch(err => console.log(err))
       })
     .catch(error => {
       this.setState({error: true})

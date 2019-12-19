@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './MoviePage.scss';
 import { connect } from 'react-redux';
 import { render } from 'react-dom';
+import { fetchRatings } from '../../apiCalls';
+import { updateUserRatings } from '../../actions';
 
 
 class MoviePage extends Component {
@@ -31,7 +33,10 @@ class MoviePage extends Component {
 
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings`, options)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        fetchRatings(userId)
+          .then(data => this.props.updateUserRatings(data.ratings))
+      })
       .catch(err => console.log(err))
   }
 
@@ -81,10 +86,14 @@ class MoviePage extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  updateUserRatings: ratings => dispatch(updateUserRatings(ratings))
+})
+
 const mapStateToProps = state => ({
   movies: state.movies,
   isLoggedIn: state.isLoggedIn,
   userId: state.userId
 })
 
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
