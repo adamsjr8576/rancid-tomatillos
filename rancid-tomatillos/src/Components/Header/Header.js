@@ -27,7 +27,13 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
 }
 
 const mapStateToProps = state => ({
-  data: state.movies
+  data: state.movies,
+  isLoggedIn: state.isLoggedIn
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+  removeUser: () => dispatch( removeUser() ),
+  updateLoggedIn: isLoggedIn => dispatch( updateLoggedIn(isLoggedIn) )
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

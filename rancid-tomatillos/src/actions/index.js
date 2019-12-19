@@ -18,3 +18,10 @@ export const updateLoggedIn = isLoggedIn => {
     isLoggedIn: !isLoggedIn
   }
 }
+
+export const removeUser = () => {
+  return {
+    type: 'REMOVE_USER',
+    user: {}
+  }
+}
