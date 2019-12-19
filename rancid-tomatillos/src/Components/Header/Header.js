@@ -8,7 +8,7 @@ import { removeUser, updateLoggedIn } from '../../actions/index';
 const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
   let log;
   if (isLoggedIn) {
-    log = <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn'>Log Out</button>
+    log = <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn-logout'>Log Out</button>
   } else {
     log = <Link to='/login' className='login-link'>
     <button className='header-btn'>Log In</button>
