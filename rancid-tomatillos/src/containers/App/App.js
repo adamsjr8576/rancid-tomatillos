@@ -3,6 +3,7 @@ import { addMovies } from '../../actions/index';
 import './App.scss';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import Login from '../Login/Login';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -38,12 +39,16 @@ class App extends Component {
                 return <Header />
                 }}
               />
-              <Route path='/' render={() => {
+              <Route exact path='/' render={() => {
                 return <MoviesContainer />
                 }}
               />
             </>
         }
+        <Route exact path='/login' render={() => {
+          return <Login />
+        }}
+        />
       </div>
     )
   }
