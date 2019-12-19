@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { removeUser, updateLoggedIn } from '../../actions/index';
 
 
@@ -21,7 +21,8 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
       <section className='header-btn-section'>
         {log}
         <Link to='/' className='login-link'>
-          <button className='header-btn'>Home</button>
+          <Route path={['/login', '/movies/:id']} render={() =>
+            <button className='header-btn'>Home</button>}/>
         </Link>
       </section>
     </header>
