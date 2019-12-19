@@ -20,7 +20,9 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
       <h1 className='header-h1'>Rancid Tomatillos</h1>
       <section className='header-btn-section'>
         {log}
-        <button className='header-btn'>Home</button>
+        <Link to='/' className='login-link'>
+          <button className='header-btn'>Home</button>
+        </Link>
       </section>
     </header>
   );

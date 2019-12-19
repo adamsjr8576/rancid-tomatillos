@@ -4,6 +4,7 @@ import './App.scss';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Login from '../Login/Login';
+import MoviePage from '../MoviePage/MoviePage';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -47,6 +48,11 @@ class App extends Component {
         }
         <Route exact path='/login' render={() => {
           return <Login />
+        }}
+        />
+        <Route exact path='/movies/:id' render={({ match }) => {
+          const { id } = match.params;
+          return <MoviePage id={id} />
         }}
         />
       </div>

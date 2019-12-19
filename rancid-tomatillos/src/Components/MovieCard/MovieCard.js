@@ -1,6 +1,7 @@
 import React from 'react';
 import './MovieCard.scss';
-import images from '../../images/images'
+import images from '../../images/images';
+import { Link } from 'react-router-dom';
 
 const MovieCard = ({ id, poster, avgRating }) => {
   let icon;
@@ -21,6 +22,9 @@ const MovieCard = ({ id, poster, avgRating }) => {
           <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
           <p className='average-rating-num'>{avgRating}</p>
         </section>
+        <Link to={`/movies/${id}`} className='movie-detail-link'>
+          <button className='details-button'>Details</button>
+        </Link>
       </section>
     </article>
   );
