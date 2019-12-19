@@ -2,7 +2,7 @@ import React, { Component }from 'react';
 import './Login.scss';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { addUser, updateLoggedIn } from '../../actions/index';
+import { addUser, updateLoggedIn, updateUserRatings } from '../../actions/index';
 
 
 class Login extends Component {
@@ -37,9 +37,15 @@ class Login extends Component {
         return res.json()
       })
       .then(data => {
-        console.log(data)
-        this.props.addUser(data)
+        
+        this.props.addUser(data.user.id)
         this.props.updateLoggedIn(this.props.isLoggedIn)
+        return data.user.id
+      })
+      .then(id => {
+        fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`)
+          .then(res => res.json())
+          .then(data => this.props.updateUserRatings(data.ratings))
       })
     .catch(error => {
       this.setState({error: true})
@@ -76,7 +82,8 @@ class Login extends Component {
 
 const mapDispatchToProps = dispatch => ({
   addUser: user => dispatch( addUser(user) ),
-  updateLoggedIn: isLoggedIn => dispatch( updateLoggedIn(isLoggedIn) )
+  updateLoggedIn: isLoggedIn => dispatch( updateLoggedIn(isLoggedIn) ),
+  updateUserRatings: ratings => dispatch( updateUserRatings(ratings) )
 })
 
 const mapStateToProps = state => ({

@@ -22,6 +22,13 @@ export const updateLoggedIn = isLoggedIn => {
 export const removeUser = () => {
   return {
     type: 'REMOVE_USER',
-    user: {}
+    id: null
+  }
+}
+
+export const updateUserRatings = (ratings) => {
+  return {
+    type: 'UPDATE_RATINGS',
+    ratings
   }
 }
