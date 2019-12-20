@@ -2,7 +2,8 @@ import React, { Component }from 'react';
 import './Login.scss';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { addUser, updateLoggedIn } from '../../actions/index';
+import { addUser, updateLoggedIn, updateUserRatings } from '../../actions/index';
+import { fetchUser, fetchRatings } from '../../apiCalls';
 
 
 class Login extends Component {
@@ -29,17 +30,16 @@ class Login extends Component {
       body: JSON.stringify(this.state)
     }
 
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
-      .then(res => {
-        if(!res.ok) {
-         throw Error('Incorrect Username/Password')
-        }
-        return res.json()
-      })
+    fetchUser(options)
       .then(data => {
-        console.log(data)
-        this.props.addUser(data)
+        this.props.addUser(data.user.id)
         this.props.updateLoggedIn(this.props.isLoggedIn)
+        return data.user.id
+      })
+      .then(id => {
+        fetchRatings(id)
+          .then(data => this.props.updateUserRatings(data.ratings))
+          .catch(err => console.log(err))
       })
     .catch(error => {
       this.setState({error: true})
@@ -49,7 +49,6 @@ class Login extends Component {
 
 
   render() { 
-    console.log(this.props.loggedInStatus)
     {
       if (this.props.loggedInStatus) {
         return (
@@ -76,7 +75,8 @@ class Login extends Component {
 
 const mapDispatchToProps = dispatch => ({
   addUser: user => dispatch( addUser(user) ),
-  updateLoggedIn: isLoggedIn => dispatch( updateLoggedIn(isLoggedIn) )
+  updateLoggedIn: isLoggedIn => dispatch( updateLoggedIn(isLoggedIn) ),
+  updateUserRatings: ratings => dispatch( updateUserRatings(ratings) )
 })
 
 const mapStateToProps = state => ({
