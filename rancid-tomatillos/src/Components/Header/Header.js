@@ -5,8 +5,9 @@ import { Route, Link } from 'react-router-dom';
 import { removeUser, updateLoggedIn } from '../../actions/index';
 
 
-const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
+const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
   let log;
+  let gradient;
   if (isLoggedIn) {
     log = <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn-logout'>Log Out</button>
   } else {
@@ -15,8 +16,14 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn }) => {
     </Link>
   }
   const index = Math.floor(Math.random() * Math.floor(20));
+  const imageUrl = data.movies[index].backdrop_path;
+  if (path.includes('movies')) {
+    gradient = `0.8`;
+  } else {
+    gradient = '0';
+  }
   return (
-    <header className='header-main' style={{backgroundImage: `url(${data.movies[index].backdrop_path})`}}>
+    <header className='header-main' style={{backgroundImage: `linear-gradient(rgba(255, 255, 255, ${gradient}), rgba(255, 255, 255, ${gradient})), url(${imageUrl})` }}>
       <h1 className='header-h1'>Rancid Tomatillos</h1>
       <section className='header-btn-section'>
         {log}

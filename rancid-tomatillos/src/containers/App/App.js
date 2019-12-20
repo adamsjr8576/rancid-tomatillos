@@ -36,8 +36,8 @@ class App extends Component {
       <div className='app-container'>
         {isLoading ? <h2>Loading...</h2>
           : <>
-              <Route path='/' render={() => {
-                return <Header />
+              <Route path='/' render={({ location }) => {
+                return <Header path={location.pathname}/>
                 }}
               />
               <Route exact path='/' render={() => {
