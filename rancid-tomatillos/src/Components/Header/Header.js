@@ -9,7 +9,9 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
   let log;
   let gradient;
   if (isLoggedIn) {
-    log = <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn-logout'>Log Out</button>
+    log = <Link to='/' className='login-link'>
+    <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn-logout'>Log Out</button>
+    </Link>
   } else {
     log = <Link to='/login' className='login-link'>
     <button className='header-btn'>Log In</button>
