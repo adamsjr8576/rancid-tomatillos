@@ -12,9 +12,17 @@
   cursor: pointer;
 }
 
-.movie-card:hover {
-  box-shadow: 5px 10px rgba(0, 0, 0, .6);
+.movie-detail-link {
+  text-decoration: none;
+}
 
+.movie-card:hover,
+.movie-card:focus {
+  box-shadow: 5px 10px rgba(0, 0, 0, .6);
+}
+
+.movie-card:active {
+  transform: scale(.97);
 }
 
 .section-movie-image {

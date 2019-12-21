@@ -13,20 +13,19 @@ const MovieCard = ({ id, poster, avgRating }) => {
     icon = images.goodTomatillo;
   }
   return (
-    <article data-id={id} className='movie-card'>
-      <section className='section-movie-image' style={{backgroundImage: `url(${poster})`}}>
-      </section>
-      <section className='section-avg-rating'>
-        <p className='average-rating-p'>Average Rating</p>
-        <section className='rating-section'>
-          <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
-          <p className='average-rating-num'>{Math.ceil(avgRating)}</p>
+    <Link to={`/movies/${id}`} className='movie-detail-link'>
+      <article data-id={id} className='movie-card'>
+        <section className='section-movie-image' style={{backgroundImage: `url(${poster})`}}>
         </section>
-        <Link to={`/movies/${id}`} className='movie-detail-link'>
-          <button className='details-button'>Details</button>
-        </Link>
-      </section>
-    </article>
+        <section className='section-avg-rating'>
+          <p className='average-rating-p'>Average Rating</p>
+          <section className='rating-section'>
+            <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+            <p className='average-rating-num'>{Math.ceil(avgRating)}</p>
+          </section>
+        </section>
+      </article>
+    </Link>
   );
 }
 

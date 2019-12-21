@@ -26,7 +26,7 @@ class MoviePage extends Component {
         movie_id: parseInt(id),
         rating: parseInt(this.state.rating)
       }),
-      headers: { 
+      headers: {
       'Content-Type': 'application/json'
       }
     }
@@ -46,7 +46,7 @@ class MoviePage extends Component {
     let movie = movies.movies.find(movie => movie.id === parseInt(id));
     const { average_rating, backdrop_path, overview, poster_path, release_date, title } = movie;
     const rating =
-    <> 
+    <>
       <h2>Rate This Movie</h2>
       <select className='select-rating' value={this.state.rating} onChange={(e) => {this.handleRatingSelect(e)}}>
         <option value='1'>1</option>
@@ -76,7 +76,7 @@ class MoviePage extends Component {
               </article>
               <article className='movie-page-details'>
                 <h2>Rating</h2>
-                <h2>{average_rating}</h2>
+                <h2>{Math.ceil(average_rating)}</h2>
                 {isLoggedIn && rating}
               </article>
             </section>
