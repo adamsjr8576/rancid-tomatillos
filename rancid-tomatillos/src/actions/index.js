@@ -5,10 +5,10 @@ export const addMovies = movies => {
   }
 }
 
-export const addUser = user => {
+export const addUser = id => {
   return {
     type: 'ADD_USER',
-    user
+    id
   }
 }
 
@@ -22,6 +22,13 @@ export const updateLoggedIn = isLoggedIn => {
 export const removeUser = () => {
   return {
     type: 'REMOVE_USER',
-    user: {}
+    id: null
+  }
+}
+
+export const updateUserRatings = (ratings) => {
+  return {
+    type: 'UPDATE_RATINGS',
+    ratings
   }
 }
