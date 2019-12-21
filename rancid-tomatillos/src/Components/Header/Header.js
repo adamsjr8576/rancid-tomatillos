@@ -8,6 +8,8 @@ import { removeUser, updateLoggedIn } from '../../actions/index';
 const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
   let log;
   let gradient;
+  const index = Math.floor(Math.random() * Math.floor(20));
+  const imageUrl = data.movies[index].backdrop_path;
   if (isLoggedIn) {
     log = <Link to='/' className='login-link'>
     <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn-logout'>Log Out</button>
@@ -17,15 +19,13 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
     <button className='header-btn'>Log In</button>
     </Link>
   }
-  const index = Math.floor(Math.random() * Math.floor(20));
-  const imageUrl = data.movies[index].backdrop_path;
   if (path.includes('movies')) {
-    gradient = `0.8`;
+    gradient = `0.9`;
   } else {
     gradient = '0';
   }
   return (
-    <header className='header-main' style={{backgroundImage: `linear-gradient(rgba(255, 255, 255, ${gradient}), rgba(255, 255, 255, ${gradient})), url(${imageUrl})` }}>
+    <header className='header-main' style={{backgroundImage: `linear-gradient(rgba(200, 200, 200, ${gradient}), rgba(200, 200, 200, ${gradient})), url(${imageUrl})` }}>
       <h1 className='header-h1'>Rancid Tomatillos</h1>
       <section className='header-btn-section'>
         {log}

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { render } from 'react-dom';
 import { fetchRatings } from '../../apiCalls';
 import { updateUserRatings } from '../../actions';
-
+import images from '../../images/images';
 
 class MoviePage extends Component {
   constructor(props) {
@@ -42,9 +42,10 @@ class MoviePage extends Component {
 
   render() {
     const { id, movies, isLoggedIn } = this.props
-
+    let icon;
     let movie = movies.movies.find(movie => movie.id === parseInt(id));
     const { average_rating, backdrop_path, overview, poster_path, release_date, title } = movie;
+    let roundedAvgRating = Math.ceil(average_rating);
     const rating =
     <>
       <h2>Rate This Movie</h2>
@@ -62,6 +63,13 @@ class MoviePage extends Component {
       </select>
       <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>Rate</button>
     </>
+    if (roundedAvgRating < 4) {
+      icon = images.badTomatillo;
+    } else if (roundedAvgRating > 3 && roundedAvgRating < 7) {
+      icon = images.okayTomatillo;
+    } else if (roundedAvgRating > 6) {
+      icon = images.goodTomatillo;
+    }
 
     return (
       <main className='movie-page-main'>
@@ -72,11 +80,15 @@ class MoviePage extends Component {
               <article className='movie-page-details'>
                 <h2>{title}</h2>
                 <p className='movie-overview'>{overview}</p>
+                <h3>Release Date</h3>
                 <p>{release_date}</p>
               </article>
               <article className='movie-page-details'>
-                <h2>Rating</h2>
-                <h2>{Math.ceil(average_rating)}</h2>
+                <h2>Average Rating</h2>
+                <section className='rating-section'>
+                <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+                <h2>{roundedAvgRating}</h2>
+                </section>
                 {isLoggedIn && rating}
               </article>
             </section>

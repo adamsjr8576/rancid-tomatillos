@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 
 const MovieCard = ({ id, poster, avgRating }) => {
   let icon;
-  if (avgRating < 4) {
+  let roundedAvgRating = Math.ceil(avgRating);
+  if (roundedAvgRating < 4) {
     icon = images.badTomatillo;
-  } else if (avgRating > 3 && avgRating < 7) {
+  } else if (roundedAvgRating > 3 && roundedAvgRating < 7) {
     icon = images.okayTomatillo;
-  } else if (avgRating > 6) {
+  } else if (roundedAvgRating > 6) {
     icon = images.goodTomatillo;
   }
   return (
@@ -21,7 +22,7 @@ const MovieCard = ({ id, poster, avgRating }) => {
           <p className='average-rating-p'>Average Rating</p>
           <section className='rating-section'>
             <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
-            <p className='average-rating-num'>{Math.ceil(avgRating)}</p>
+            <p className='average-rating-num'>{roundedAvgRating}</p>
           </section>
         </section>
       </article>
