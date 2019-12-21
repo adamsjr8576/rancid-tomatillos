@@ -20,7 +20,7 @@ const MovieCard = ({ id, poster, avgRating }) => {
         <p className='average-rating-p'>Average Rating</p>
         <section className='rating-section'>
           <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
-          <p className='average-rating-num'>{avgRating}</p>
+          <p className='average-rating-num'>{Math.ceil(avgRating)}</p>
         </section>
         <Link to={`/movies/${id}`} className='movie-detail-link'>
           <button className='details-button'>Details</button>
