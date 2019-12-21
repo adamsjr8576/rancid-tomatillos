@@ -39,6 +39,32 @@
   font-size: 1.5em;
   padding: 20px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.movie-page-ratings {
+  width: 100%;
+  border: 4px solid white;
+  background-color: rgba(0, 0, 0, .9);
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-rating-container {
+  width: 48%;
+}
+
+.average-rating-container {
+  width: 48%;
 }
 
 .movie-overview {

@@ -47,7 +47,7 @@ class MoviePage extends Component {
     const { average_rating, backdrop_path, overview, poster_path, release_date, title } = movie;
     let roundedAvgRating = Math.ceil(average_rating);
     const rating =
-    <>
+    <section className='user-rating-container'>
       <h2>Rate This Movie</h2>
       <select className='select-rating' value={this.state.rating} onChange={(e) => {this.handleRatingSelect(e)}}>
         <option value='1'>1</option>
@@ -62,7 +62,7 @@ class MoviePage extends Component {
         <option value='10'>10</option>
       </select>
       <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>Rate</button>
-    </>
+    </section>
     if (roundedAvgRating < 4) {
       icon = images.badTomatillo;
     } else if (roundedAvgRating > 3 && roundedAvgRating < 7) {
@@ -83,11 +83,13 @@ class MoviePage extends Component {
                 <h3>Release Date</h3>
                 <p>{release_date}</p>
               </article>
-              <article className='movie-page-details'>
-                <h2>Average Rating</h2>
-                <section className='rating-section'>
-                <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
-                <h2>{roundedAvgRating}</h2>
+              <article className='movie-page-ratings'>
+                <section className='average-rating-container'>
+                  <h2>Average Rating</h2>
+                  <div className='rating-section'>
+                  <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+                  <h2>{roundedAvgRating}</h2>
+                  </div>
                 </section>
                 {isLoggedIn && rating}
               </article>
