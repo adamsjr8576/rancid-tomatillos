@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './MoviePage.scss';
+import StarRatingComponent from 'react-star-rating-component';
 import { connect } from 'react-redux';
 import { render } from 'react-dom';
 import { fetchRatings } from '../../apiCalls';
@@ -10,12 +11,16 @@ class MoviePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: null
+      rating: 1
     }
   }
 
   handleRatingSelect = (e) => {
     this.setState({ rating: e.target.value })
+  }
+
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({rating: nextValue});
   }
 
   handleRatingSubmit = () => {
@@ -49,18 +54,14 @@ class MoviePage extends Component {
     const rating =
     <section className='user-rating-container'>
       <h2>Rate This Movie</h2>
-      <select className='select-rating' value={this.state.rating} onChange={(e) => {this.handleRatingSelect(e)}}>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-        <option value='8'>8</option>
-        <option value='9'>9</option>
-        <option value='10'>10</option>
-      </select>
+      <section>
+        <StarRatingComponent
+            name="rating"
+            starCount={10}
+            value={this.state.rating}
+            onStarClick={this.onStarClick}
+        />
+      </section>
       <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>Rate</button>
     </section>
     if (roundedAvgRating < 4) {
