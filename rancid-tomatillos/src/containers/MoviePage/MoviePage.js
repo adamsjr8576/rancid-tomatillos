@@ -33,6 +33,7 @@ class MoviePage extends Component {
         </section>
       )
     } else {
+      const icon = this.determineIcon(this.state.rating);
       return (
         <section className='user-rating-container'>
           <h2>Rate This Movie</h2>
@@ -44,7 +45,7 @@ class MoviePage extends Component {
                 onStarClick={this.onStarClick}
             />
           </section>
-          <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>Rate</button>
+          <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>{<img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />} Rate It</button>
         </section>)
     }
   }

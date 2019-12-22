@@ -14,7 +14,7 @@ const MovieCard = ({ id, poster, avgRating, userRating, isLoggedIn }) => {
     }
   }
   let userRatingInfo;
-  let roundedAvgRating = Math.ceil(avgRating);
+  const roundedAvgRating = Math.ceil(avgRating);
   const avgRatingIcon = determineIcon(roundedAvgRating);
   if (userRating.length) {
     const userRatingIcon = determineIcon(userRating[0].rating);
