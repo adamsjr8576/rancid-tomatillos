@@ -21,8 +21,6 @@ class App extends Component {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
       .then(res => res.json())
       .then(data => {
-        console.log(data)
-        console.log(this.props.addMovies)
         this.props.addMovies(data)
         this.setState({ isLoading: false })
       })
