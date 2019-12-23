@@ -6,7 +6,7 @@
 
 .movie-page-section {
   width: 100%;
-  height: 100vh;
+  height: 130vh;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@
   width: 500px;
   height: 750px;
   background-size: cover;
-  border: 4px solid black;
+  border: 8px solid white;
   border-radius: 10px;
 }
 
@@ -32,13 +32,59 @@
 
 .movie-page-details {
   width: 100%;
-  border: 4px solid black;
-  background-color: rgba(0, 0, 0, .8);
+  border: 4px solid white;
+  background-color: rgba(0, 0, 0, .9);
   color: white;
   text-align: center;
   font-size: 1.5em;
   padding: 20px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.movie-page-ratings {
+  width: 100%;
+  border: 4px solid white;
+  background-color: rgba(0, 0, 0, .9);
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.rate-btn {
+  width: 40%;
+  border-radius: 10px;
+  outline: 0;
+  font-size: 1em;
+  padding: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.rate-btn:hover {
+  transform: scale(1.05);
+}
+
+.user-rating-container {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.average-rating-container {
+  width: 48%;
 }
 
 .movie-overview {
