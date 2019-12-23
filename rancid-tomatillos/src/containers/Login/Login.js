@@ -62,7 +62,7 @@ class Login extends Component {
             <input id='email' className="form-input" type="text" name="email" 
             value={this.state.email} onChange={(e) => this.handleChange(e)} placeholder="BigTimeTimmyJim@yahoo.com" autocomplete='off' />
             <label htmlFor='password' className="form-label">Password</label>
-            <input id='password' className="form-input" type="text" name="password" 
+            <input id='password' className="form-input" type="password" name="password" 
             value={this.state.password} onChange={(e) => this.handleChange(e)} placeholder="password123" autocomplete='off' />
             <button onClick={this.handleSubmit} type='button' className='form-btn'>Submit</button> 
             {this.state.error && <p className='error-p'>You have entered an invalid username or password, please try again</p>}
