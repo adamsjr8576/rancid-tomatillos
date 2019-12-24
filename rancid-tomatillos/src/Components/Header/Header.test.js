@@ -77,8 +77,8 @@ describe('Header', () => {
         isLoggedIn: true
       };
 
-      const mappedPropped = mapStateToProps(mockState);
-      expect(mappedPropped).toEqual(expected);
+      const mappedProps = mapStateToProps(mockState);
+      expect(mappedProps).toEqual(expected);
     });
   });
 
