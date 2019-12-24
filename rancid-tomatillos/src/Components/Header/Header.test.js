@@ -26,7 +26,7 @@ describe('Header', () => {
         release_date: "2019-09-17",
         title: "Ad Astra",
       }]
-    }
+    };
   });
 
   describe('Header Component', () => {

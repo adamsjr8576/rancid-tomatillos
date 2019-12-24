@@ -2,8 +2,9 @@ import React from 'react';
 import MovieCard from '../../Components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
 import './MoviesContainer.scss';
+import PropTypes from 'prop-types';
 
-const MoviesContainer = ({ data, userRatings, isLoggedIn }) => {
+export const MoviesContainer = ({ data, userRatings, isLoggedIn }) => {
   const moviesList = data.movies.map(movie => {
     const movieRating = userRatings.filter(userRating => parseInt(userRating.movie_id) === parseInt(movie.id));
     return (
@@ -25,10 +26,16 @@ const MoviesContainer = ({ data, userRatings, isLoggedIn }) => {
   );
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   data: state.movies,
   userRatings: state.userRatings,
   isLoggedIn: state.isLoggedIn
 });
 
 export default connect(mapStateToProps)(MoviesContainer);
+
+MoviesContainer.propTypes = {
+  data: PropTypes.objectOf(PropTypes.array),
+  isLoggedIn: PropTypes.bool,
+  userRatings: PropTypes.array
+}
