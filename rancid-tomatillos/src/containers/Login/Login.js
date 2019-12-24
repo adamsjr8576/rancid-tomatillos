@@ -9,10 +9,10 @@ import { fetchUser, fetchRatings } from '../../apiCalls';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       email: '',
       password: '',
-      error: false 
+      error: false
      }
   }
 
@@ -48,7 +48,7 @@ class Login extends Component {
 
 
 
-  render() { 
+  render() {
     {
       if (this.props.loggedInStatus) {
         return (
@@ -56,11 +56,11 @@ class Login extends Component {
         )
       } else {
 
-        return ( 
+        return (
           <form>
             <label htmlFor='email' className="form-label">Email</label>
-            <input id='email' className="form-input" type="text" name="email" 
-            value={this.state.email} onChange={(e) => this.handleChange(e)} placeholder="BigTimeTimmyJim@yahoo.com" autocomplete='off' />
+            <input id='email' className="form-input" type="text" name="email"
+            value={this.state.email} onChange={(e) => this.handleChange(e)} placeholder="BigTimeTimmyJim@yahoo.com" />
             <label htmlFor='password' className="form-label">Password</label>
             <input id='password' className="form-input" type="password" name="password" 
             value={this.state.password} onChange={(e) => this.handleChange(e)} placeholder="password123" autocomplete='off' />
@@ -82,5 +82,5 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   loggedInStatus: state.isLoggedIn
 })
- 
+
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

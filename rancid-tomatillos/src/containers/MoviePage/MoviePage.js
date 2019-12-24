@@ -1,21 +1,63 @@
 import React, { Component } from 'react';
 import './MoviePage.scss';
+import StarRatingComponent from 'react-star-rating-component';
 import { connect } from 'react-redux';
 import { render } from 'react-dom';
 import { fetchRatings } from '../../apiCalls';
 import { updateUserRatings } from '../../actions';
-
+import images from '../../images/images';
 
 class MoviePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: null
+      rating: 1
     }
   }
 
-  handleRatingSelect = (e) => {
-    this.setState({ rating: e.target.value })
+  onStarClick = (nextValue, prevValue, name) => {
+    this.setState({rating: nextValue});
+  }
+
+  findMovieRating = (id, userRatings) => {
+    const movieRating = userRatings.filter(userRating => userRating.movie_id === parseInt(id));
+    if (movieRating.length) {
+      const icon = this.determineIcon(movieRating[0].rating);
+      return (
+        <section className='average-rating-container'>
+          <h2>User Rating</h2>
+          <div className='rating-section'>
+            <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+            <h2>{movieRating[0].rating}</h2>
+          </div>
+        </section>
+      )
+    } else {
+      const icon = this.determineIcon(this.state.rating);
+      return (
+        <section className='user-rating-container'>
+          <h2>Rate This Movie</h2>
+          <section>
+            <StarRatingComponent
+                name="rating"
+                starCount={10}
+                value={this.state.rating}
+                onStarClick={this.onStarClick}
+            />
+          </section>
+          <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>{<img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />} Rate It</button>
+        </section>)
+    }
+  }
+
+  determineIcon = (rating) => {
+    if (rating < 4) {
+      return images.badTomatillo;
+    } else if (rating > 3 && rating < 7) {
+      return images.okayTomatillo;
+    } else if (rating > 6) {
+      return images.goodTomatillo;
+    }
   }
 
   handleRatingSubmit = () => {
@@ -26,7 +68,7 @@ class MoviePage extends Component {
         movie_id: parseInt(id),
         rating: parseInt(this.state.rating)
       }),
-      headers: { 
+      headers: {
       'Content-Type': 'application/json'
       }
     }
@@ -41,28 +83,12 @@ class MoviePage extends Component {
   }
 
   render() {
-    const { id, movies, isLoggedIn } = this.props
-
+    const { id, movies, isLoggedIn, userRatings } = this.props
     let movie = movies.movies.find(movie => movie.id === parseInt(id));
     const { average_rating, backdrop_path, overview, poster_path, release_date, title } = movie;
-    const rating =
-    <> 
-      <h2>Rate This Movie</h2>
-      <select className='select-rating' value={this.state.rating} onChange={(e) => {this.handleRatingSelect(e)}}>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-        <option value='8'>8</option>
-        <option value='9'>9</option>
-        <option value='10'>10</option>
-      </select>
-      <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>Rate</button>
-    </>
-
+    let roundedAvgRating = Math.ceil(average_rating);
+    const rating = this.findMovieRating(id, userRatings);
+    const icon = this.determineIcon(roundedAvgRating)
     return (
       <main className='movie-page-main'>
         <section className='movie-page-section' style={{backgroundImage:`url(${backdrop_path})`}} >
@@ -72,11 +98,17 @@ class MoviePage extends Component {
               <article className='movie-page-details'>
                 <h2>{title}</h2>
                 <p className='movie-overview'>{overview}</p>
+                <h3>Release Date</h3>
                 <p>{release_date}</p>
               </article>
-              <article className='movie-page-details'>
-                <h2>Rating</h2>
-                <h2>{average_rating}</h2>
+              <article className='movie-page-ratings'>
+                <section className='average-rating-container'>
+                  <h2>Average Rating</h2>
+                  <div className='rating-section'>
+                    <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+                    <h2>{roundedAvgRating}</h2>
+                  </div>
+                </section>
                 {isLoggedIn && rating}
               </article>
             </section>
@@ -93,7 +125,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   movies: state.movies,
   isLoggedIn: state.isLoggedIn,
-  userId: state.userId
+  userId: state.userId,
+  userRatings: state.userRatings
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
