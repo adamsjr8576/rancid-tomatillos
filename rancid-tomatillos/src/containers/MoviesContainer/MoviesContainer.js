@@ -2,7 +2,6 @@ import React from 'react';
 import MovieCard from '../../Components/MovieCard/MovieCard';
 import { connect } from 'react-redux';
 import './MoviesContainer.scss';
-import { render } from 'react-dom';
 
 const MoviesContainer = ({ data, userRatings, isLoggedIn }) => {
   const moviesList = data.movies.map(movie => {
