@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import { Header, mapStateToProps, mapDispatchToProps } from './Header';
 import { removeUser, updateLoggedIn } from '../../actions';
 
-
 describe('Header', () => {
   let mockData;
   beforeEach(() => {

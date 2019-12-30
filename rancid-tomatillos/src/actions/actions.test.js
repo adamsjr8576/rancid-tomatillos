@@ -29,6 +29,7 @@ describe('actions', () => {
       movies
     }
     const result = actions.addMovies(movies);
+    
     expect(result).toEqual(expectedAction);
   });
 
