@@ -40,6 +40,9 @@ describe('Header', () => {
       global.Math = mockMath;
       mockRemoveUser = jest.fn();
       mockUpdateLoggedIn = jest.fn();
+    });
+
+    it('should match the snapshot with isLoggedIn as true and path not containing movies', () => {
       mockPath = '/'
       wrapper = shallow(
         <Header
@@ -49,14 +52,35 @@ describe('Header', () => {
           updateLoggedIn={mockUpdateLoggedIn}
           path={mockPath}
         />
-      )
+      );
+      expect(wrapper).toMatchSnapshot();
     });
 
-    it('should match the snapshot with correct data passed in', () => {
+    it('should match the snapshot with isLoggedIn as false and path containing movies', () => {
+      mockPath = '/movies'
+      wrapper = shallow(
+        <Header
+          data={mockData}
+          isLoggedIn={false}
+          removeUser={mockRemoveUser}
+          updateLoggedIn={mockUpdateLoggedIn}
+          path={mockPath}
+        />
+      );
       expect(wrapper).toMatchSnapshot();
     });
 
     it('should call updateLoggedIn and removeUser on button click', () => {
+      mockPath = '/'
+      wrapper = shallow(
+        <Header
+          data={mockData}
+          isLoggedIn={true}
+          removeUser={mockRemoveUser}
+          updateLoggedIn={mockUpdateLoggedIn}
+          path={mockPath}
+        />
+      );
       wrapper.find('.header-btn-logout').simulate('click');
 
       expect(mockUpdateLoggedIn).toHaveBeenCalledWith(true);
