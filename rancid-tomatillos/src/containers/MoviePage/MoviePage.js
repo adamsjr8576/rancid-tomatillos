@@ -45,7 +45,7 @@ class MoviePage extends Component {
                 onStarClick={this.onStarClick}
             />
           </section>
-          <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>{<img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />} Rate It</button>
+          <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>{<img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />}{this.state.rating} Rate It</button>
         </section>)
     }
   }
