@@ -24,14 +24,17 @@
 
 @keyframes pulse {
 	0% {
+    transform: rotate(-15deg);
 		transform: scale(0.95);
 	}
 	
 	70% {
+    transform: rotate(-15deg);
 		transform: scale(1);
 	}
 	
 	100% {
+    transform: rotate(-15deg);
 		transform: scale(0.95);
 	}
 }

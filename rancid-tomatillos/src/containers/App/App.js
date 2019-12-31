@@ -18,16 +18,16 @@ class App extends Component {
     }
   }
 
-  // componentDidMount = () => {
-  //   fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.props.addMovies(data)
-  //       this.setState({ isLoading: false })
-  //     })
+  componentDidMount = () => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+      .then(res => res.json())
+      .then(data => {
+        this.props.addMovies(data)
+        this.setState({ isLoading: false })
+      })
 
-  //     .catch(err => console.log(err))
-  // }
+      .catch(err => console.log(err))
+  }
 
   render() {
     const { isLoading } = this.state
