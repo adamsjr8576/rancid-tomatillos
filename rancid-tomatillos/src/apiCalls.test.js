@@ -1,8 +1,65 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import { fetchUser, fetchRatings } from './apiCalls';
+import { fetchMovies, fetchUser, fetchRatings } from './apiCalls';
  
 describe('apiCalls', () => {
+  describe('fetchMovies', () => {
+    let mockResponse;
+    beforeEach(() => { 
+      mockResponse = {movies:
+     [
+      {
+        average_rating: 6,
+        backdrop_path: "https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg",
+        id: 1,
+        overview: "In Jumanji: The Next Level",
+        poster_path: "https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg",
+        release_date: "2019-12-04",
+        title: "Jumanji: The Next Level",
+      },
+      {
+        average_rating: 5.666666666666667,
+        backdrop_path: "https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg",
+        id: 2,
+        overview: "The near future",
+        poster_path: "https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg",
+        release_date: "2019-09-17",
+        title: "Ad Astra",
+      }]
+      };
+    });
+  
+    it('should return an object with all the movies data', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+
+      expect(fetchMovies()).resolves.toEqual(mockResponse);
+    });
+
+    it('SAD: should throw an error if the fetch fails', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false,
+        });
+      });
+
+      expect(fetchMovies()).rejects.toEqual(Error('Fetching movies failed'));
+    });
+
+    it('SAD: should throw an error if the promise does not resolve', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(Error('fetch failed'))
+      });
+
+      expect(fetchMovies()).rejects.toEqual(Error('fetch failed'));
+    });
+  });
+
+
   describe('fetchUser', () => {
     let mockOptions, mockResponse, mockState;
 
