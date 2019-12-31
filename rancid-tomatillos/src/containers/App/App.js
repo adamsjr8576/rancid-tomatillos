@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { addMovies } from '../../actions/index';
 import { updateIsLoading } from '../../actions/index';
 import './App.scss';
+import Loading from '../../Components/Loading/Loading';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Login from '../Login/Login';
@@ -30,7 +31,7 @@ export class App extends Component {
     const { isLoading } = this.props
     return (
       <div className='app-container'>
-        {isLoading ? <h2>Loading...</h2>
+        {isLoading ? <Loading />
           : <>
               <Route path='/' render={({ location }) => {
                 return <Header path={location.pathname}/>
