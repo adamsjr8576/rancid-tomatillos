@@ -1,0 +1,37 @@
+.loading-wrapper-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: {
+    image: url('../../images/Red\ Curtain1.jpg');
+    repeat: no-repeat;
+    size: cover;
+  }
+}
+
+.popcorn-div {
+  width: 25vw;
+  height: 25vw;
+  background: {
+    image: url('../../images/popcorn.png');
+    size: cover;
+    repeat: no-repeat;
+  }
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+	}
+	
+	70% {
+		transform: scale(1);
+	}
+	
+	100% {
+		transform: scale(0.95);
+	}
+}
