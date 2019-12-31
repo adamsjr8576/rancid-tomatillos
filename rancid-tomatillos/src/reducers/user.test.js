@@ -3,13 +3,10 @@ import { addUserReducer } from './user';
 
 describe('addUserReducer', () => {
   it('should return the current state', () => {
-    const expected = '';
-    const mockAction = {
-      type: 'ADD_USER',
-      action: 4
-    }
+    const expected = null;
+    const mockAction = {}
     const result = addUserReducer(undefined, mockAction);
 
-    expected(result).toEqual(expected)
-  })
+    expect(result).toEqual(expected)
+  });
 })
