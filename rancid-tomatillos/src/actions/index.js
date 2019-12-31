@@ -1,5 +1,5 @@
 export const addMovies = movies => {
-  return { 
+  return {
     type: 'ADD_MOVIES',
     movies
   }
@@ -26,9 +26,16 @@ export const removeUser = () => {
   }
 }
 
-export const updateUserRatings = (ratings) => {
+export const updateUserRatings = ratings => {
   return {
     type: 'UPDATE_RATINGS',
     ratings
+  }
+}
+
+export const updateIsLoading = isLoading => {
+  return {
+    type: 'UPDATE_IS_LOADING',
+    isLoading: !isLoading
   }
 }

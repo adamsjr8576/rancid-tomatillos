@@ -29,7 +29,7 @@ describe('actions', () => {
       movies
     }
     const result = actions.addMovies(movies);
-    
+
     expect(result).toEqual(expectedAction);
   });
 
@@ -89,6 +89,17 @@ describe('actions', () => {
       ratings
     }
     const result = actions.updateUserRatings(ratings);
+
+    expect(result).toEqual(expectedAction);
+  });
+
+  it('should have a type of UPDATE_IS_LOADING', () => {
+    const isLoading = true;
+    const expectedAction = {
+      type: 'UPDATE_IS_LOADING',
+      isLoading: false
+    }
+    const result = actions.updateIsLoading(isLoading);
 
     expect(result).toEqual(expectedAction);
   });
