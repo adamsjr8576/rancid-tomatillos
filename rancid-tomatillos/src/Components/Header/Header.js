@@ -3,9 +3,9 @@ import './Header.scss';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { removeUser, updateLoggedIn } from '../../actions/index';
+import PropTypes from 'prop-types';
 
-
-const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
+export const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
   let log;
   let gradient;
   const index = Math.floor(Math.random() * Math.floor(20));
@@ -38,14 +38,22 @@ const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
   );
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   data: state.movies,
   isLoggedIn: state.isLoggedIn
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   removeUser: () => dispatch( removeUser() ),
   updateLoggedIn: isLoggedIn => dispatch( updateLoggedIn(isLoggedIn) )
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+Header.propTypes = {
+  data: PropTypes.objectOf(PropTypes.array),
+  isLoggedIn: PropTypes.bool,
+  removeUser: PropTypes.func,
+  updateLoggedIn: PropTypes.func,
+  path: PropTypes.string
+}

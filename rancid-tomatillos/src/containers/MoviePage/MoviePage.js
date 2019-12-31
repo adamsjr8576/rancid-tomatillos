@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './MoviePage.scss';
 import StarRatingComponent from 'react-star-rating-component';
 import { connect } from 'react-redux';
-import { render } from 'react-dom';
 import { fetchRatings } from '../../apiCalls';
 import { updateUserRatings } from '../../actions';
 import images from '../../images/images';
@@ -27,7 +26,7 @@ class MoviePage extends Component {
         <section className='average-rating-container'>
           <h2>User Rating</h2>
           <div className='rating-section'>
-            <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+            <img src={icon} alt='rancid tomatillo' className='tomatillo-icon' />
             <h2>{movieRating[0].rating}</h2>
           </div>
         </section>
@@ -105,7 +104,7 @@ class MoviePage extends Component {
                 <section className='average-rating-container'>
                   <h2>Average Rating</h2>
                   <div className='rating-section'>
-                    <img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+                    <img src={icon} alt='rancid tomatillo' className='tomatillo-icon' />
                     <h2>{roundedAvgRating}</h2>
                   </div>
                 </section>
