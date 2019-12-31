@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { addMovies } from '../../actions/index';
 import './App.scss';
+import Loading from '../../Components/Loading/Loading';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Login from '../Login/Login';
@@ -17,22 +18,22 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
-      .then(res => res.json())
-      .then(data => {
-        this.props.addMovies(data)
-        this.setState({ isLoading: false })
-      })
+  // componentDidMount = () => {
+  //   fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.props.addMovies(data)
+  //       this.setState({ isLoading: false })
+  //     })
 
-      .catch(err => console.log(err))
-  }
+  //     .catch(err => console.log(err))
+  // }
 
   render() {
     const { isLoading } = this.state
     return (
       <div className='app-container'>
-        {isLoading ? <h2>Loading...</h2>
+        {isLoading ? <Loading />
           : <>
               <Route path='/' render={({ location }) => {
                 return <Header path={location.pathname}/>
