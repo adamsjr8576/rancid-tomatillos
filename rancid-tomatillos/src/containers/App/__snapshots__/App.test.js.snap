@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App App Component should match the snapshot with all the data passed through 1`] = `
+<div
+  className="app-container"
+>
+  <h2>
+    Loading...
+  </h2>
+  <Route
+    exact={true}
+    path="/login"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/movies/:id"
+    render={[Function]}
+  />
+</div>
+`;
+
+exports[`App App Component should render a different snapshot when isLoading is false 1`] = `
+<div
+  className="app-container"
+>
+  <Route
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/login"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/movies/:id"
+    render={[Function]}
+  />
+</div>
+`;
