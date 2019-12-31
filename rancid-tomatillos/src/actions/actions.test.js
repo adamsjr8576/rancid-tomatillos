@@ -92,4 +92,15 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
+  it('should have a type of UPDATE_IS_LOADING', () => {
+    const isLoading = true;
+    const expectedAction = {
+      type: 'UPDATE_IS_LOADING',
+      isLoading: false
+    }
+    const result = actions.updateIsLoading(isLoading);
+
+    expect(result).toEqual(expectedAction);
+  });
 });
