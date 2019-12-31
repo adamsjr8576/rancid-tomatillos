@@ -22,7 +22,7 @@ const MovieCard = ({ id, poster, avgRating, userRating, isLoggedIn }) => {
       <section className='section-avg-rating'>
         <p className='average-rating-p'>User Rating</p>
         <div className='rating-section'>
-          <img src={userRatingIcon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+          <img src={userRatingIcon} alt='rancid tomatillo' className='tomatillo-icon' />
           <p className='average-rating-num'>{userRating[0].rating}</p>
         </div>
       </section>
@@ -41,7 +41,7 @@ const MovieCard = ({ id, poster, avgRating, userRating, isLoggedIn }) => {
           <section className='section-avg-rating'>
             <p className='average-rating-p'>Average Rating</p>
             <section className='rating-section'>
-              <img src={avgRatingIcon} alt='image of rancid tomatillo' className='tomatillo-icon' />
+              <img src={avgRatingIcon} alt='rancid tomatillo' className='tomatillo-icon' />
               <p className='average-rating-num'>{roundedAvgRating}</p>
             </section>
           </section>
