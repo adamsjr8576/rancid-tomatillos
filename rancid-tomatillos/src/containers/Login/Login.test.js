@@ -8,7 +8,7 @@ describe('Login Component', () => {
   let wrapper, mockAddUser, mockUpdateLoggedIn, mockUpdateUserRatings, mockDispatch, id;
   beforeEach(() => {
     mockAddUser = jest.fn();
-    mockUpdateLoggedIn = jest.fn();
+    mockUpdateLoggedIn = jest.fn(() => 6);
     mockUpdateUserRatings = jest.fn();
     mockDispatch = jest.fn();
     id = 2;
@@ -53,18 +53,30 @@ describe('Login Component', () => {
 
   it('should invoke handleSubmit when button is clicked', async () => {
     const apiCalls = require('../../apiCalls');
-    const spyUser = jest.spyOn(apiCalls, 'fetchUser');
-    const spyRatings = jest.spyOn(apiCalls, 'fetchRatings');
+    const mockRatings = {ratings: [
+      {
+        id: 22, 
+        user_id: 6,
+        movie_id: 4,
+        rating: 10, 
+        created_at: "2019-12",
+        updated_at: "2019-12"
+      }]
+    };
+
+    const spyUser = jest.spyOn(apiCalls, 'fetchUser').mockImplementation(() => 6);
+    const spyRatings = jest.spyOn(apiCalls, 'fetchRatings').mockImplementation(() => mockRatings);
     wrapper.instance().addUser = jest.fn();
     wrapper.instance().updateLoggedIn = jest.fn();
     wrapper.instance().updateUserRatings = jest.fn();
+
 
     spyUser.mockResolvedValue();
     spyRatings.mockResolvedValue();
 
     wrapper.find('#submit-btn').simulate('click');
 
-    await Promise.resolve()
+    await Promise.resolve();
   
     expect(spyUser).toHaveBeenCalledTimes(1);
     // expect(spyRatings).toHaveBeenCalledTimes(1);
