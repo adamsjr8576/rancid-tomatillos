@@ -1,31 +1,28 @@
-import React from 'react';
-import {shallow} from 'enzyme';
-import { fetchMovies, fetchUser, fetchRatings } from './apiCalls';
- 
+import { fetchMovies, fetchUser, fetchRatings, postUserRating } from './apiCalls';
+
 describe('apiCalls', () => {
   describe('fetchMovies', () => {
     let mockResponse;
     beforeEach(() => { 
       mockResponse = {movies:
-     [
-      {
-        average_rating: 6,
-        backdrop_path: "https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg",
-        id: 1,
-        overview: "In Jumanji: The Next Level",
-        poster_path: "https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg",
-        release_date: "2019-12-04",
-        title: "Jumanji: The Next Level",
-      },
-      {
-        average_rating: 5.666666666666667,
-        backdrop_path: "https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg",
-        id: 2,
-        overview: "The near future",
-        poster_path: "https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg",
-        release_date: "2019-09-17",
-        title: "Ad Astra",
-      }]
+        [{
+          average_rating: 6,
+          backdrop_path: "https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg",
+          id: 1,
+          overview: "In Jumanji: The Next Level",
+          poster_path: "https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg",
+          release_date: "2019-12-04",
+          title: "Jumanji: The Next Level",
+        },
+        {
+          average_rating: 5.666666666666667,
+          backdrop_path: "https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg",
+          id: 2,
+          overview: "The near future",
+          poster_path: "https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg",
+          release_date: "2019-09-17",
+          title: "Ad Astra",
+        }]
       };
     });
   
@@ -90,7 +87,7 @@ describe('apiCalls', () => {
         });
       });
     });
-     
+
     it('should fetch with the correct arguments', () => {
       const expected = ['https://rancid-tomatillos.herokuapp.com/api/v1/login', mockOptions];
 
@@ -180,6 +177,60 @@ describe('apiCalls', () => {
       });
 
       expect(fetchRatings(mockId)).rejects.toEqual(Error('fetch failed'));
+    });
+  });
+  describe('postUserRating', () => {
+    let mockResponse, mockOptions, mockMovieId, mockUserId, mockRating;
+    beforeEach(() => {
+      mockMovieId = 23;
+      mockUserId = 6;
+      mockRating = 9;
+      mockResponse = {rating: {user_id: mockUserId, movie_id: mockMovieId, rating: mockRating}};
+      mockOptions = {
+        method: 'POST',
+        body: JSON.stringify({
+        movie_id: parseInt(mockMovieId),
+        rating: parseInt(mockRating)
+        }),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      };
+
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+
+    it('should fetch with the correct arguments', () => {
+      const expected = [`https://rancid-tomatillos.herokuapp.com/api/v1/users/${mockUserId}/ratings`, mockOptions];
+      postUserRating(mockOptions, mockUserId);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    });
+
+    it('should return a response of the newly posted rating', () => {
+      expect(postUserRating(mockOptions, mockUserId)).resolves.toEqual(mockResponse);
+    });
+
+    it('SAD: should throw an error message if response is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        })
+      });
+
+      expect(postUserRating(mockOptions, mockUserId)).rejects.toEqual(Error('Failure to POST User Rating'));
+    });
+    
+    it('SAD: should throw an error message if promise does not resolve', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(Error('fetch failed'))
+      });
+
+      expect(postUserRating(mockOptions, mockUserId)).rejects.toEqual(Error('fetch failed'));
     });
   });
 });

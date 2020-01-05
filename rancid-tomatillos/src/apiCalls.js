@@ -29,3 +29,13 @@ export const fetchRatings = (id) => {
     })
 }
 
+export const postUserRating = (options, userId) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings`, options)
+    .then(res => {
+      if (!res.ok) {
+      throw Error('Failure to POST User Rating')
+    }
+    return res.json()
+  })
+}
+
