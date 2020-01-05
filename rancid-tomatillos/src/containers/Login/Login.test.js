@@ -50,6 +50,8 @@ describe('Login Component', () => {
 
   it('should invoke handleSubmit when button is clicked', () => {
     wrapper.instance().handleSubmit = jest.fn();
+    // wrapper.instance().isLoggedIn = true;
+
     wrapper.find('#submit-btn').simulate('click');
   
     expect(wrapper.instance().handleSubmit).toHaveBeenCalled();
