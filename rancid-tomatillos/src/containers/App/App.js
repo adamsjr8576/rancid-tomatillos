@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { addMovies } from '../../actions/index';
+import { updateIsLoading } from '../../actions/index';
 import './App.scss';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
@@ -12,9 +13,6 @@ import { connect } from 'react-redux';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoading: true
-    }
   }
 
   componentDidMount = () => {
@@ -22,14 +20,14 @@ class App extends Component {
       .then(res => res.json())
       .then(data => {
         this.props.addMovies(data)
-        this.setState({ isLoading: false })
+        this.props.updateIsLoading(this.props.isLoading)
       })
 
       .catch(err => console.log(err))
   }
 
   render() {
-    const { isLoading } = this.state
+    const { isLoading } = this.props
     return (
       <div className='app-container'>
         {isLoading ? <h2>Loading...</h2>
@@ -59,7 +57,12 @@ class App extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addMovies: movies => dispatch( addMovies(movies) )
+  addMovies: movies => dispatch( addMovies(movies) ),
+  updateIsLoading: isLoading => dispatch( updateIsLoading(isLoading) )
 });
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = state => ({
+  isLoading: state.isLoading
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
