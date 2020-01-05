@@ -25,18 +25,24 @@ describe('addUserReducer', () => {
   });
 
   it('should return the correct state when the action is REMOVE_USER', () => {
-    const initialState = 5;
+    const initialState = null;
     const id = 5;
+    const finalState = null;
 
-    const action = {
-      type: 'REMOVE_USER',
-      id
+    const actionAdd = {
+      type: 'ADD_USER',
+      id: id
     }
 
-    const result = addUserReducer(initialState, action);
-    const newState = null;
+    addUserReducer(initialState, actionAdd)
 
-    expect(result).toEqual(newState)
-  })
-})
+    const actionRemove = {
+      type: 'REMOVE_USER',
+      id: finalState
+    }
 
+    const result = addUserReducer(initialState, actionRemove);
+
+    expect(result).toEqual(finalState)
+  });
+});

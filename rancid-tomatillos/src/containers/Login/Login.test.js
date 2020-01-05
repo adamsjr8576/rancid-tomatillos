@@ -3,14 +3,17 @@ import { shallow } from 'enzyme';
 import { Login, mapDispatchToProps, mapStateToProps } from '../Login/Login';
 import { addUser, updateLoggedIn, updateUserRatings } from '../../actions';
 
+
 describe('Login Component', () => {
-  let wrapper, mockAddUser, mockUpdateLoggedIn, mockUpdateUserRatings, mockDispatch;
+  let wrapper, mockAddUser, mockUpdateLoggedIn, mockUpdateUserRatings, mockDispatch, id;
   beforeEach(() => {
     mockAddUser = jest.fn();
     mockUpdateLoggedIn = jest.fn();
     mockUpdateUserRatings = jest.fn();
     mockDispatch = jest.fn();
+    id = 2;
     wrapper = shallow(<Login 
+      id={id}
       addUser = {mockAddUser}
       updateLoggedIn = {mockUpdateLoggedIn}
       updateUserRatings = {mockUpdateUserRatings}
@@ -48,13 +51,23 @@ describe('Login Component', () => {
     expect(wrapper.state()).toEqual(mockState)
   });
 
-  it('should invoke handleSubmit when button is clicked', () => {
-    wrapper.instance().handleSubmit = jest.fn();
-    // wrapper.instance().isLoggedIn = true;
+  it('should invoke handleSubmit when button is clicked', async () => {
+    const apiCalls = require('../../apiCalls');
+    const spyUser = jest.spyOn(apiCalls, 'fetchUser');
+    const spyRatings = jest.spyOn(apiCalls, 'fetchRatings');
+    wrapper.instance().addUser = jest.fn();
+    wrapper.instance().updateLoggedIn = jest.fn();
+    wrapper.instance().updateUserRatings = jest.fn();
+
+    spyUser.mockResolvedValue();
+    spyRatings.mockResolvedValue();
 
     wrapper.find('#submit-btn').simulate('click');
+
+    await Promise.resolve()
   
-    expect(wrapper.instance().handleSubmit).toHaveBeenCalled();
+    expect(spyUser).toHaveBeenCalledTimes(1);
+    // expect(spyRatings).toHaveBeenCalledTimes(1);
   });
 
   describe('mapDispatchToProps', () => {
