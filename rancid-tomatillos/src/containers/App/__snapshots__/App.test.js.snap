@@ -4,9 +4,7 @@ exports[`App App Component should match the snapshot with all the data passed th
 <div
   className="app-container"
 >
-  <h2>
-    Loading...
-  </h2>
+  <Loading />
   <Route
     exact={true}
     path="/login"
