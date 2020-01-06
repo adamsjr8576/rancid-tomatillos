@@ -37,14 +37,29 @@ describe('addRatingsReducer', () => {
       rating: 1,
       created_at: "2020-01-06T20:46:43.774Z",
       updated_at: "2020-01-06T20:46:43.774Z"
+    },
+    {
+      id: 23,
+      user_id: 6,
+      movie_id: 15,
+      rating: 8,
+      created_at: "2019-12-19T22:05:16.098Z",
+      updated_at: "2019-12-19T22:05:16.098Z"
     }];
     const mockAction = {
       type: 'DELETE_RATING',
       ratingId: 435
     };
     const result = addRatingsReducer(mockRatings, mockAction);
-    const expected = [];
+    const expected = [{
+      id: 23,
+      user_id: 6,
+      movie_id: 15,
+      rating: 8,
+      created_at: "2019-12-19T22:05:16.098Z",
+      updated_at: "2019-12-19T22:05:16.098Z"
+    }];
 
     expect(result).toEqual(expected);
-  })
+  });
 })

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './MoviePage.scss';
 import StarRatingComponent from 'react-star-rating-component';
 import { connect } from 'react-redux';
-import { fetchRatings, postUserRating } from '../../apiCalls';
+import { fetchRatings, postUserRating, deleteApiRating } from '../../apiCalls';
 import { updateUserRatings, deleteUserRating } from '../../actions';
 import images from '../../images/images';
 
@@ -27,8 +27,7 @@ export class MoviePage extends Component {
       }
 
     }
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${movieRating.user_id}/ratings/${movieRating.id}`, options)
-      .then(res => res)
+    deleteApiRating(options, movieRating)
       .then(data => this.props.deleteUserRating(movieRating.id))
       .catch(err => console.log(err))
   }

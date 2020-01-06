@@ -39,3 +39,12 @@ export const postUserRating = (options, userId) => {
   })
 }
 
+export const deleteApiRating = (options, movieRating) => {
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${movieRating.user_id}/ratings/${movieRating.id}`, options)
+    .then(res => {
+      if (!res.ok) {
+        throw Error('Failure to DELETE User Rating')
+      }
+      return res
+    })
+}
