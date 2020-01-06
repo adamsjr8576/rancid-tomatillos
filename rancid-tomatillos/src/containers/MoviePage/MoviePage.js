@@ -28,6 +28,8 @@ export class MoviePage extends Component {
           <div className='rating-section'>
             <img src={icon} alt='rancid tomatillo' className='tomatillo-icon' />
             <h2>{movieRating[0].rating}</h2>
+            <button className='delete-rating-btn' onClick={() => {}} type=
+            'button'>Delete Rating</button>
           </div>
         </section>
       )
