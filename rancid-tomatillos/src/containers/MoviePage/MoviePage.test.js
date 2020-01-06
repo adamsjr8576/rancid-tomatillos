@@ -170,6 +170,45 @@ describe('Movie Page', () => {
       });
     });
 
+    describe('deleteRating', () => {
+      it('should invoke deleteApiRating when the delete rating button is clicked', async () => {
+        const apiCalls = require('../../apiCalls');
+        const isLoggedIn = true;
+        const wrapper = shallow(<MoviePage
+          id={18}
+          movies={movies}
+          isLoggedIn={isLoggedIn}
+          userId={userId}
+          userRatings={userRatings}
+        />);
+        const deleteSpy = jest.spyOn(apiCalls, 'deleteApiRating');
+        
+        deleteSpy.mockResolvedValue();
+
+        wrapper.find('.delete-rating-btn').simulate('click');
+
+        await Promise.resolve();
+
+        expect(deleteSpy).toHaveBeenCalledTimes(1);
+      });
+
+      it('should invoke deleteRating when the delete rating button is clicked', () => {
+        const isLoggedIn = true;
+        const wrapper = shallow(<MoviePage 
+          id={18}
+          movies={movies}
+          isLoggedIn={isLoggedIn}
+          userId={userId}
+          userRatings={userRatings}
+        />)
+        wrapper.instance().deleteRating = jest.fn();
+
+        wrapper.find('.delete-rating-btn').simulate('click');
+
+        expect(wrapper.instance().deleteRating).toHaveBeenCalled()
+      })
+    });
+
     describe('determineIcon', () => {
       let images, isLoggedIn, wrapper;
 

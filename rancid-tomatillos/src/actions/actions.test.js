@@ -103,4 +103,15 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
+  it('should have a type of DELETE_RATING', () => {
+    const ratingId = 7;
+    const expectedAction = {
+      type: 'DELETE_RATING',
+      ratingId
+    }
+    const result = actions.deleteUserRating(ratingId);
+
+    expect(result).toEqual(expectedAction);
+  });
 });

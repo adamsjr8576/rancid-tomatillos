@@ -149,6 +149,13 @@ exports[`Movie Page Movie Page Component should match the snapshot when the user
             <h2>
               2
             </h2>
+            <button
+              className="delete-rating-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              Delete Rating
+            </button>
           </div>
         </section>
       </article>
@@ -237,6 +244,13 @@ exports[`Movie Page Movie Page Component should match the snapshot when the user
             <h2>
               5
             </h2>
+            <button
+              className="delete-rating-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              Delete Rating
+            </button>
           </div>
         </section>
       </article>
@@ -325,6 +339,13 @@ exports[`Movie Page Movie Page Component should match the snapshot when the user
             <h2>
               8
             </h2>
+            <button
+              className="delete-rating-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              Delete Rating
+            </button>
           </div>
         </section>
       </article>

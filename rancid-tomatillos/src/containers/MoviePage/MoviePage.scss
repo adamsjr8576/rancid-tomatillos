@@ -90,3 +90,16 @@
 .movie-overview {
   text-align: left;
 }
+
+.delete-rating-btn {
+  margin-left: 30px;
+  font-size: .5em;
+  padding: 5px;
+  border-radius: 10px;
+
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
