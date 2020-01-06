@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './MoviePage.scss';
 import StarRatingComponent from 'react-star-rating-component';
 import { connect } from 'react-redux';
-import { fetchRatings } from '../../apiCalls';
+import { fetchRatings, postUserRating } from '../../apiCalls';
 import { updateUserRatings } from '../../actions';
 import images from '../../images/images';
 
-class MoviePage extends Component {
+export class MoviePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,7 @@ class MoviePage extends Component {
     }
   }
 
-  onStarClick = (nextValue, prevValue, name) => {
+  onStarClick = (nextValue) => {
     this.setState({rating: nextValue});
   }
 
@@ -44,7 +44,8 @@ class MoviePage extends Component {
                 onStarClick={this.onStarClick}
             />
           </section>
-          <button className='rate-btn' onClick={this.handleRatingSubmit} type='button'>{<img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />}{this.state.rating} Rate It</button>
+          <button className='rate-btn' onClick={this.handleRatingSubmit} 
+          type='button'>{<img src={icon} alt='image of rancid tomatillo' className='tomatillo-icon' />}{this.state.rating} Rate It</button>
         </section>)
     }
   }
@@ -72,8 +73,7 @@ class MoviePage extends Component {
       }
     }
 
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings`, options)
-      .then(res => res.json())
+    postUserRating(options, userId)
       .then(data => {
         fetchRatings(userId)
           .then(data => this.props.updateUserRatings(data.ratings))
@@ -117,11 +117,11 @@ class MoviePage extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   updateUserRatings: ratings => dispatch(updateUserRatings(ratings))
 })
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   movies: state.movies,
   isLoggedIn: state.isLoggedIn,
   userId: state.userId,

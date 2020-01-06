@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import { addMovies } from '../../actions/index';
 import { updateIsLoading } from '../../actions/index';
 import './App.scss';
+import Loading from '../../Components/Loading/Loading';
 import Header from '../../Components/Header/Header';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import Login from '../Login/Login';
 import MoviePage from '../MoviePage/MoviePage';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchMovies } from '../../apiCalls';
 
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount = () => {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
-      .then(res => res.json())
+    fetchMovies()
       .then(data => {
         this.props.addMovies(data)
         this.props.updateIsLoading(this.props.isLoading)
@@ -30,7 +31,7 @@ class App extends Component {
     const { isLoading } = this.props
     return (
       <div className='app-container'>
-        {isLoading ? <h2>Loading...</h2>
+        {isLoading ? <Loading />
           : <>
               <Route path='/' render={({ location }) => {
                 return <Header path={location.pathname}/>
@@ -56,12 +57,12 @@ class App extends Component {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addMovies: movies => dispatch( addMovies(movies) ),
   updateIsLoading: isLoading => dispatch( updateIsLoading(isLoading) )
 });
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   isLoading: state.isLoading
 });
 
