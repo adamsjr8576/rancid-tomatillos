@@ -39,3 +39,10 @@ export const updateIsLoading = isLoading => {
     isLoading: !isLoading
   }
 }
+
+export const deleteUserRating = ratingId => {
+  return {
+    type: 'DELETE_RATING',
+    ratingId: ratingId
+  }
+}

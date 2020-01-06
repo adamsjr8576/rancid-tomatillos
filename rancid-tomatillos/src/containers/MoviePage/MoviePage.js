@@ -3,7 +3,7 @@ import './MoviePage.scss';
 import StarRatingComponent from 'react-star-rating-component';
 import { connect } from 'react-redux';
 import { fetchRatings, postUserRating } from '../../apiCalls';
-import { updateUserRatings } from '../../actions';
+import { updateUserRatings, deleteUserRating } from '../../actions';
 import images from '../../images/images';
 
 export class MoviePage extends Component {
@@ -18,6 +18,21 @@ export class MoviePage extends Component {
     this.setState({rating: nextValue});
   }
 
+  deleteRating = (userRatings, movieId) => {
+    const movieRating = userRatings.find(userRating => userRating.movie_id === parseInt(movieId));
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+
+    }
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${movieRating.user_id}/ratings/${movieRating.id}`, options)
+      .then(res => res)
+      .then(data => this.props.deleteUserRating(movieRating.id))
+      .catch(err => console.log(err))
+  }
+
   findMovieRating = (id, userRatings) => {
     const movieRating = userRatings.filter(userRating => userRating.movie_id === parseInt(id));
     if (movieRating.length) {
@@ -28,7 +43,7 @@ export class MoviePage extends Component {
           <div className='rating-section'>
             <img src={icon} alt='rancid tomatillo' className='tomatillo-icon' />
             <h2>{movieRating[0].rating}</h2>
-            <button className='delete-rating-btn' onClick={() => {}} type=
+            <button className='delete-rating-btn' onClick={() => this.deleteRating(userRatings, id)} type=
             'button'>Delete Rating</button>
           </div>
         </section>
@@ -120,7 +135,8 @@ export class MoviePage extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  updateUserRatings: ratings => dispatch(updateUserRatings(ratings))
+  updateUserRatings: ratings => dispatch(updateUserRatings(ratings)),
+  deleteUserRating: ratingId => dispatch(deleteUserRating(ratingId))
 })
 
 export const mapStateToProps = state => ({
