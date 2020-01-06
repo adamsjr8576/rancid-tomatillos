@@ -1,4 +1,4 @@
-import { fetchMovies, fetchUser, fetchRatings, postUserRating } from './apiCalls';
+import { fetchMovies, fetchUser, fetchRatings, postUserRating, deleteApiRating } from './apiCalls';
 
 describe('apiCalls', () => {
   describe('fetchMovies', () => {
@@ -231,6 +231,53 @@ describe('apiCalls', () => {
       });
 
       expect(postUserRating(mockOptions, mockUserId)).rejects.toEqual(Error('fetch failed'));
+    });
+  });
+
+  describe('deleteApiCalls', () => {
+    let mockOptions, mockMovieRating;
+    beforeEach(() => {
+      mockOptions = {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+
+      mockMovieRating = {
+        user_id: 6,
+        id: 22
+      }
+      
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+        });
+      });
+    });
+
+    it('should be called with the correct parameters', () => {
+      deleteApiRating(mockOptions, mockMovieRating);
+
+      expect(window.fetch).toHaveBeenCalledWith('https://rancid-tomatillos.herokuapp.com/api/v1/users/6/ratings/22', mockOptions);
+    });
+
+    it('SAD: it should throw and error when the promise is not resolved', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(Error('fetch failed'))
+      });
+      
+      expect(deleteApiRating(mockOptions, mockMovieRating)).rejects.toEqual(Error('fetch failed'))
+    });
+
+    it('SAD: it should throw an error when the response is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false,
+        });
+      });
+
+      expect(deleteApiRating(mockOptions, mockMovieRating)).rejects.toEqual(Error('Failure to DELETE User Rating'))
     });
   });
 });
