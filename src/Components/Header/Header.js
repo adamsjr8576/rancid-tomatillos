@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 import { removeUser, updateLoggedIn } from '../../actions/index';
 import PropTypes from 'prop-types';
+import images from '../../images/images';
 
 export const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) => {
   let log;
   let gradient;
   const index = Math.floor(Math.random() * Math.floor(20));
-  const imageUrl = data.movies[index].backdrop_path;
+  let imageUrl = data.movies[index].backdrop_path;
   if (isLoggedIn) {
     log = <Link to='/' className='login-link'>
     <button onClick={() => {updateLoggedIn(isLoggedIn); removeUser();}} className='header-btn-logout'>Log Out</button>
@@ -19,13 +20,11 @@ export const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) =
     <button className='header-btn'>Log In</button>
     </Link>
   }
-  if (path.includes('movies')) {
-    gradient = `0.9`;
-  } else {
-    gradient = '0';
+  if (path.includes('movies') || path.includes('login')) {
+    imageUrl = images.filmImage;
   }
   return (
-    <header className='header-main' style={{backgroundImage: `linear-gradient(rgba(200, 200, 200, ${gradient}), rgba(200, 200, 200, ${gradient})), url(${imageUrl})` }}>
+    <header className='header-main' style={{backgroundImage: `url(${imageUrl})` }}>
       <h1 className='header-h1'>Rancid Tomatillos</h1>
       <section className='header-btn-section'>
         {log}
