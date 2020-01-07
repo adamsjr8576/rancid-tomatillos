@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Rancid Tomatillos 
 
-## Available Scripts
+#### Contributors: John Adams (@adamsjr8576), Colin Koga (@Ckoga) & James Miller (@JamesRexMiller4)
 
-In the project directory, you can run:
+<img width="1391" alt="Screen Shot 2020-01-07 at 1 48 48 PM" src="https://user-images.githubusercontent.com/27719824/71928961-d6908c80-3155-11ea-88e5-d5ac4e40fae6.png">
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Overview: 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The objective of this group project was to replicate a Rotten Tomatoes movie site. When a user first visits the site, a list of movies currently in theaters/ displays with an average rating displaying beside the movie card. A user can login and enter their credentials and then is redirected to the home page, which will now additionally render if that user has rated the movie. 
 
-### `npm test`
+### Technologies used: 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+  **React.js**
+  
+  **Redux**
+  
+  **Scss**
+  
+  **Testing with jest and enzyme**
+  
+  **Fetch Api**
+  
+  **JavaScript ES6**
+  
+  **Heroku**
+  
+  **React Router**
+  
+  **Node.js**
+  
+  
+  ## HOME PAGE
+  
+  The home page displays all the fetched movies and their average ratings.  If the user logs in, the home page will display the all the movies, their average ratings and a user rating if the user has rated the movie.
+  
+  ![2020-01-07 14 05 14](https://user-images.githubusercontent.com/27719824/71929473-ef4d7200-3156-11ea-8e5a-12edae446b06.gif)
+  
+  ## MOVIE PAGE
+   When a movie poster is clicked the user will be taken to the Movie page which will display the movie poster, a brief description of the movie and the average rating.  If the user is logged in the Movie page will also display the user rating (if the movie has been rated) or it will prompt the user to rate the movie.  If the movie has already been rated there is the option to delete the rating.
+ 
+ ![screencapture-localhost-3000-movies-1-2020-01-07-14_26_56](https://user-images.githubusercontent.com/27719824/71930986-fe81ef00-3159-11ea-9fc4-381c7f041019.png)
+    
+   ![2020-01-07 14 18 44](https://user-images.githubusercontent.com/27719824/71930357-b910f200-3158-11ea-8bdd-7f964c6a6ed0.gif)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### View Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The live version of this app can be seen [here](https://rancidtomatillos.herokuapp.com/)
