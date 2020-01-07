@@ -1,6 +1,6 @@
 # Rancid Tomatillos 
 
-### Contributors: John Adams (@adamsjr8576), Colin Koga (@Ckoga) & James Miller (@JamesRexMiller4)
+#### Contributors: John Adams (@adamsjr8576), Colin Koga (@Ckoga) & James Miller (@JamesRexMiller4)
 
 <img width="1391" alt="Screen Shot 2020-01-07 at 1 48 48 PM" src="https://user-images.githubusercontent.com/27719824/71928961-d6908c80-3155-11ea-88e5-d5ac4e40fae6.png">
 
