@@ -20,9 +20,9 @@ export const Header = ({ data, isLoggedIn, removeUser, updateLoggedIn, path }) =
     <button className='header-btn'>Log In</button>
     </Link>
   }
-  if (path.includes('movies')) {
+  if (path.includes('movies') || path.includes('login')) {
     imageUrl = images.filmImage;
-  } 
+  }
   return (
     <header className='header-main' style={{backgroundImage: `url(${imageUrl})` }}>
       <h1 className='header-h1'>Rancid Tomatillos</h1>
