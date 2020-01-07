@@ -1,0 +1,455 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Page Movie Page Component should match the snapshot when the isLoggedIn is false 1`] = `
+<main
+  className="movie-page-main"
+>
+  <section
+    className="movie-page-section"
+    style={
+      Object {
+        "backgroundImage": "url(https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg)",
+      }
+    }
+  >
+    <article
+      className="movie-page-poster"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg)",
+        }
+      }
+    />
+    <section
+      className="movie-info-container"
+    >
+      <article
+        className="movie-page-details"
+      >
+        <h2>
+          Ad Astra
+        </h2>
+        <p
+          className="movie-overview"
+        >
+          The near future, astronaut Roy McBride undertakes a mission in search of the unknown.
+        </p>
+        <h3>
+          Release Date
+        </h3>
+        <p>
+          2019-09-17
+        </p>
+      </article>
+      <article
+        className="movie-page-ratings"
+      >
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            Average Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="okayTomatillo.png"
+            />
+            <h2>
+              5
+            </h2>
+          </div>
+        </section>
+      </article>
+    </section>
+  </section>
+</main>
+`;
+
+exports[`Movie Page Movie Page Component should match the snapshot when the user is logged in and the correct movie has been rated 1`] = `
+<main
+  className="movie-page-main"
+>
+  <section
+    className="movie-page-section"
+    style={
+      Object {
+        "backgroundImage": "url(https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg)",
+      }
+    }
+  >
+    <article
+      className="movie-page-poster"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg)",
+        }
+      }
+    />
+    <section
+      className="movie-info-container"
+    >
+      <article
+        className="movie-page-details"
+      >
+        <h2>
+          The Count of Monte Cristo
+        </h2>
+        <p
+          className="movie-overview"
+        >
+          The ultimate tale of revenge and adventure.
+        </p>
+        <h3>
+          Release Date
+        </h3>
+        <p>
+          2019-09-17
+        </p>
+      </article>
+      <article
+        className="movie-page-ratings"
+      >
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            Average Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="goodTomatillo.png"
+            />
+            <h2>
+              10
+            </h2>
+          </div>
+        </section>
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            User Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="badTomatillo.png"
+            />
+            <h2>
+              2
+            </h2>
+            <button
+              className="delete-rating-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              Delete Rating
+            </button>
+          </div>
+        </section>
+      </article>
+    </section>
+  </section>
+</main>
+`;
+
+exports[`Movie Page Movie Page Component should match the snapshot when the user is logged in and the correct movie has been rated 2`] = `
+<main
+  className="movie-page-main"
+>
+  <section
+    className="movie-page-section"
+    style={
+      Object {
+        "backgroundImage": "url(https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg)",
+      }
+    }
+  >
+    <article
+      className="movie-page-poster"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg)",
+        }
+      }
+    />
+    <section
+      className="movie-info-container"
+    >
+      <article
+        className="movie-page-details"
+      >
+        <h2>
+          Star Wars: The Rise Of Skywalker
+        </h2>
+        <p
+          className="movie-overview"
+        >
+          The conclusion of the Skywalker timeline, in a galaxy far far away.
+        </p>
+        <h3>
+          Release Date
+        </h3>
+        <p>
+          2019-09-17
+        </p>
+      </article>
+      <article
+        className="movie-page-ratings"
+      >
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            Average Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="okayTomatillo.png"
+            />
+            <h2>
+              5
+            </h2>
+          </div>
+        </section>
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            User Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="okayTomatillo.png"
+            />
+            <h2>
+              5
+            </h2>
+            <button
+              className="delete-rating-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              Delete Rating
+            </button>
+          </div>
+        </section>
+      </article>
+    </section>
+  </section>
+</main>
+`;
+
+exports[`Movie Page Movie Page Component should match the snapshot when the user is logged in and the movie has been rated 1`] = `
+<main
+  className="movie-page-main"
+>
+  <section
+    className="movie-page-section"
+    style={
+      Object {
+        "backgroundImage": "url(https://image.tmdb.org/t/p/original//5BwqwxMEjeFtdknRV792Svo0K1v.jpg)",
+      }
+    }
+  >
+    <article
+      className="movie-page-poster"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg)",
+        }
+      }
+    />
+    <section
+      className="movie-info-container"
+    >
+      <article
+        className="movie-page-details"
+      >
+        <h2>
+          Ad Astra
+        </h2>
+        <p
+          className="movie-overview"
+        >
+          The near future, astronaut Roy McBride undertakes a mission in search of the unknown.
+        </p>
+        <h3>
+          Release Date
+        </h3>
+        <p>
+          2019-09-17
+        </p>
+      </article>
+      <article
+        className="movie-page-ratings"
+      >
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            Average Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="okayTomatillo.png"
+            />
+            <h2>
+              5
+            </h2>
+          </div>
+        </section>
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            User Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="goodTomatillo.png"
+            />
+            <h2>
+              8
+            </h2>
+            <button
+              className="delete-rating-btn"
+              onClick={[Function]}
+              type="button"
+            >
+              Delete Rating
+            </button>
+          </div>
+        </section>
+      </article>
+    </section>
+  </section>
+</main>
+`;
+
+exports[`Movie Page Movie Page Component should match the snapshot when the user is logged in and the movie is not rated 1`] = `
+<main
+  className="movie-page-main"
+>
+  <section
+    className="movie-page-section"
+    style={
+      Object {
+        "backgroundImage": "url(https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg)",
+      }
+    }
+  >
+    <article
+      className="movie-page-poster"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg)",
+        }
+      }
+    />
+    <section
+      className="movie-info-container"
+    >
+      <article
+        className="movie-page-details"
+      >
+        <h2>
+          Jumanji: The Next Level
+        </h2>
+        <p
+          className="movie-overview"
+        >
+          In Jumanji: The Next Level, the gang is back to escape the world's most dangerous game.
+        </p>
+        <h3>
+          Release Date
+        </h3>
+        <p>
+          2019-12-04
+        </p>
+      </article>
+      <article
+        className="movie-page-ratings"
+      >
+        <section
+          className="average-rating-container"
+        >
+          <h2>
+            Average Rating
+          </h2>
+          <div
+            className="rating-section"
+          >
+            <img
+              alt="rancid tomatillo"
+              className="tomatillo-icon"
+              src="goodTomatillo.png"
+            />
+            <h2>
+              7
+            </h2>
+          </div>
+        </section>
+        <section
+          className="user-rating-container"
+        >
+          <h2>
+            Rate This Movie
+          </h2>
+          <section>
+            <StarRatingComponent
+              editing={true}
+              emptyStarColor="#333"
+              name="rating"
+              onStarClick={[Function]}
+              starColor="#ffb400"
+              starCount={10}
+              value={1}
+            />
+          </section>
+          <button
+            className="rate-btn"
+            onClick={[Function]}
+            type="button"
+          >
+            <img
+              alt="image of rancid tomatillo"
+              className="tomatillo-icon"
+              src="badTomatillo.png"
+            />
+            1
+             Rate It
+          </button>
+        </section>
+      </article>
+    </section>
+  </section>
+</main>
+`;

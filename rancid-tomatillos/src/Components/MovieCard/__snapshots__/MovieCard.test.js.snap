@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard component should match the snapshot while the user is loggedIn and there are userRatings 1`] = `
+<Link
+  className="movie-detail-link"
+  to="/movies/1"
+>
+  <article
+    className="movie-card"
+    data-id={1}
+  >
+    <section
+      className="section-movie-image"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg)",
+        }
+      }
+    />
+    <div
+      className="movie-rating-container"
+    >
+      <section
+        className="section-avg-rating"
+      >
+        <p
+          className="average-rating-p"
+        >
+          Average Rating
+        </p>
+        <section
+          className="rating-section"
+        >
+          <img
+            alt="rancid tomatillo"
+            className="tomatillo-icon"
+            src="goodTomatillo.png"
+          />
+          <p
+            className="average-rating-num"
+          >
+            7
+          </p>
+        </section>
+      </section>
+      <section
+        className="section-avg-rating"
+      >
+        <p
+          className="average-rating-p"
+        >
+          User Rating
+        </p>
+        <div
+          className="rating-section"
+        >
+          <img
+            alt="rancid tomatillo"
+            className="tomatillo-icon"
+          />
+          <p
+            className="average-rating-num"
+          />
+        </div>
+      </section>
+    </div>
+  </article>
+</Link>
+`;
+
+exports[`MovieCard component should match the snapshot while the user is loggedIn but with no userRatings 1`] = `
+<Link
+  className="movie-detail-link"
+  to="/movies/1"
+>
+  <article
+    className="movie-card"
+    data-id={1}
+  >
+    <section
+      className="section-movie-image"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg)",
+        }
+      }
+    />
+    <div
+      className="movie-rating-container"
+    >
+      <section
+        className="section-avg-rating"
+      >
+        <p
+          className="average-rating-p"
+        >
+          Average Rating
+        </p>
+        <section
+          className="rating-section"
+        >
+          <img
+            alt="rancid tomatillo"
+            className="tomatillo-icon"
+            src="goodTomatillo.png"
+          />
+          <p
+            className="average-rating-num"
+          >
+            7
+          </p>
+        </section>
+      </section>
+      <p
+        className="user-no-rating-p"
+      >
+        No User Rating
+      </p>
+    </div>
+  </article>
+</Link>
+`;
+
+exports[`MovieCard component should match the snapshot with all the data being passed in correctly while not logged in 1`] = `
+<Link
+  className="movie-detail-link"
+  to="/movies/1"
+>
+  <article
+    className="movie-card"
+    data-id={1}
+  >
+    <section
+      className="section-movie-image"
+      style={
+        Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg)",
+        }
+      }
+    />
+    <div
+      className="movie-rating-container"
+    >
+      <section
+        className="section-avg-rating"
+      >
+        <p
+          className="average-rating-p"
+        >
+          Average Rating
+        </p>
+        <section
+          className="rating-section"
+        >
+          <img
+            alt="rancid tomatillo"
+            className="tomatillo-icon"
+            src="goodTomatillo.png"
+          />
+          <p
+            className="average-rating-num"
+          >
+            7
+          </p>
+        </section>
+      </section>
+    </div>
+  </article>
+</Link>
+`;
