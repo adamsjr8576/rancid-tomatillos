@@ -57,7 +57,7 @@ export class Login extends Component {
 
 
   render() {
-    const {movies, isLoading, loggedInStatus} = this.props
+    const {movies, loggedInStatus} = this.props
     if (loggedInStatus) {
       return (
     <Redirect to='/' />
@@ -88,8 +88,7 @@ export const mapDispatchToProps = dispatch => ({
 
 export const mapStateToProps = state => ({
   loggedInStatus: state.isLoggedIn,
-  movies: state.movies,
-  isLoading: state.isLoading
+  movies: state.movies
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
