@@ -5,6 +5,11 @@
 <img width="1391" alt="Screen Shot 2020-01-07 at 1 48 48 PM" src="https://user-images.githubusercontent.com/27719824/71928961-d6908c80-3155-11ea-88e5-d5ac4e40fae6.png">
 
 
+# Use:
+
+Username: charlie@turing.io
+Password: qwerty
+
 # Overview: 
 
 The objective of this group project was to replicate a Rotten Tomatoes movie site. When a user first visits the site, a list of movies currently in theaters/ displays with an average rating displaying beside the movie card. A user can login and enter their credentials and then is redirected to the home page, which will now additionally render if that user has rated the movie. 
