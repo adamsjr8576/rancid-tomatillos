@@ -1,5 +1,5 @@
 export const fetchMovies = () => {
-  return fetch('https://rancid-tomatillos.herokuapp.com/api/v1/movies')
+  return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(res => {
       if (!res.ok) {
         throw Error('Fetching movies failed')
@@ -10,7 +10,7 @@ export const fetchMovies = () => {
 
 
 export const fetchUser = (options) => {
-  return fetch('https://rancid-tomatillos.herokuapp.com/api/v1/login', options)
+  return fetch('https://rancid-tomatillos.herokuapp.com/api/v2/login', options)
     .then(res => {
       if (!res.ok) {
         throw Error('Incorrect Username/Password')
@@ -20,7 +20,7 @@ export const fetchUser = (options) => {
 }
 
 export const fetchRatings = (id) => {
-  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${id}/ratings`)
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${id}/ratings`)
     .then(res => {
       if (!res.ok) {
         throw Error('Invalid User ID')
@@ -30,7 +30,7 @@ export const fetchRatings = (id) => {
 }
 
 export const postUserRating = (options, userId) => {
-  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${userId}/ratings`, options)
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${userId}/ratings`, options)
     .then(res => {
       if (!res.ok) {
       throw Error('Failure to POST User Rating')
@@ -40,7 +40,7 @@ export const postUserRating = (options, userId) => {
 }
 
 export const deleteApiRating = (options, movieRating) => {
-  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v1/users/${movieRating.user_id}/ratings/${movieRating.id}`, options)
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/users/${movieRating.user_id}/ratings/${movieRating.id}`, options)
     .then(res => {
       if (!res.ok) {
         throw Error('Failure to DELETE User Rating')
