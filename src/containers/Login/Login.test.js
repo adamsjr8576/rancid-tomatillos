@@ -5,18 +5,31 @@ import { addUser, updateLoggedIn, updateUserRatings } from '../../actions';
 
 
 describe('Login Component', () => {
-  let wrapper, mockAddUser, mockUpdateLoggedIn, mockUpdateUserRatings, mockDispatch, id;
+  let wrapper, mockAddUser, mockUpdateLoggedIn, mockUpdateUserRatings, mockDispatch, id, mockMovies;
   beforeEach(() => {
+    const mockMath = Object.create(global.Math);
+    mockMath.random = () => 0;
+    global.Math = mockMath;
+    mockMovies = { movies: [{
+      id:1,
+      title:"Jumanji: The Next Level",
+      poster_path:"https://image.tmdb.org/t/p/original//l4iknLOenijaB85Zyb5SxH1gGz8.jpg",
+      backdrop_path:"https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg",
+      release_date:"2019-12-04",
+      overview:"In Jumanji: The Next Level",
+      average_rating:6
+    }]};
     mockAddUser = jest.fn();
     mockUpdateLoggedIn = jest.fn(() => 6);
     mockUpdateUserRatings = jest.fn();
     mockDispatch = jest.fn();
     id = 2;
-    wrapper = shallow(<Login 
+    wrapper = shallow(<Login
       id={id}
       addUser = {mockAddUser}
       updateLoggedIn = {mockUpdateLoggedIn}
       updateUserRatings = {mockUpdateUserRatings}
+      movies = {mockMovies}
     />)
   });
 
@@ -28,7 +41,8 @@ describe('Login Component', () => {
     let mockDefaultState = {
       email: '',
       password: '',
-      error: false
+      error: false,
+      background: 'https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg'
     }
 
     expect(wrapper.state()).toEqual(mockDefaultState);
@@ -44,7 +58,8 @@ describe('Login Component', () => {
     let mockState = {
       email: 'Charlie@turing.io',
       password: '',
-      error: false
+      error: false,
+      background: 'https://image.tmdb.org/t/p/original//zTxHf9iIOCqRbxvl8W5QYKrsMLq.jpg'
     }
 
     wrapper.instance().handleChange(mockEvent);
@@ -55,10 +70,10 @@ describe('Login Component', () => {
     const apiCalls = require('../../apiCalls');
     const mockRatings = {ratings: [
       {
-        id: 22, 
+        id: 22,
         user_id: 6,
         movie_id: 4,
-        rating: 10, 
+        rating: 10,
         created_at: "2019-12",
         updated_at: "2019-12"
       }]
@@ -77,7 +92,7 @@ describe('Login Component', () => {
     wrapper.find('#submit-btn').simulate('click');
 
     await Promise.resolve();
-  
+
     expect(spyUser).toHaveBeenCalledTimes(1);
     // expect(spyRatings).toHaveBeenCalledTimes(1);
   });
@@ -133,12 +148,16 @@ describe('Login Component', () => {
       userId: null
     };
 
-    const expected = { loggedInStatus: false }
+    const expected = {
+      loggedInStatus: false,
+      movies: ['Frozen 2', 'Add Astra', 'Pee Wees Big Adventure']
+    }
 
-    it('should check the store to see if the user is logged in', () => {
+    it('should return an object from the store containing the user is logged in and get the movies', () => {
       const mappedProps = mapStateToProps(mockState)
 
       expect(mappedProps).toEqual(expected);
     });
+
   });
 });

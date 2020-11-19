@@ -7,7 +7,7 @@
   border-radius: 10px;
   background-color: #4F776C;
   color: white;
-  margin: 10px 0;
+  margin: 12px 0;
   border: 2px solid black;
   cursor: pointer;
 }
@@ -18,7 +18,8 @@
 
 .movie-card:hover,
 .movie-card:focus {
-  box-shadow: 5px 10px rgba(0, 0, 0, .6);
+  box-shadow: 3px 5px rgba(0, 0, 0, .6);
+  transform: scale(1.01)
 }
 
 .movie-card:active {
@@ -28,7 +29,8 @@
 .section-movie-image {
   width: 65%;
   height: 100%;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
   background-size: cover;
 }
 
